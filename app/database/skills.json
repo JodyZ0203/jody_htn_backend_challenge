@@ -1,0 +1,189 @@
+[
+  { "skills": "Swift", "skills_id": "86695e88-0465-4162-9c2d-c40db4765fb0" },
+  { "skills": "OpenCV", "skills_id": "bd5513d5-26e2-4aa8-976d-7d6e0e099656" },
+  {
+    "skills": "Foundation",
+    "skills_id": "ba16f8fe-81b9-4f2e-afcc-22d20897745f"
+  },
+  { "skills": "Elixir", "skills_id": "0a901935-db41-4a88-9fdb-72fecb87291c" },
+  { "skills": "Fortran", "skills_id": "4f1fc444-375f-4dfe-a2bd-888d4d4deffa" },
+  { "skills": "Plotly", "skills_id": "722b700d-6682-4236-a517-347ea460e941" },
+  { "skills": "Haskell", "skills_id": "9773b535-f88e-442a-b00a-ee530b288f0e" },
+  { "skills": "PHP", "skills_id": "c5fad8bc-7258-4cb4-81fe-7d360db9b139" },
+  { "skills": "Scheme", "skills_id": "ac02646c-7294-40f1-9e71-302146e4c077" },
+  { "skills": "Julia", "skills_id": "30008abc-9570-439d-8352-98723c5ed642" },
+  {
+    "skills": "Spectre.css",
+    "skills_id": "27686108-60c9-42d3-9a71-30a63f9297c2"
+  },
+  { "skills": "Ruby", "skills_id": "96e52b23-8e1f-4ca5-913f-9640e6fde47f" },
+  { "skills": "Sed", "skills_id": "1724a733-3a00-43d4-ae7a-ab7a2b9e7b15" },
+  {
+    "skills": "Smalltalk",
+    "skills_id": "583d880f-ebed-4ac0-b0d6-db707a0af57a"
+  },
+  {
+    "skills": "Materialize",
+    "skills_id": "bd2efeab-7fde-41a7-ba56-461bb433a3d5"
+  },
+  { "skills": "Svelte", "skills_id": "2f9344db-a739-40ae-a647-de483c0e636c" },
+  {
+    "skills": "Unreal Engine",
+    "skills_id": "0b99d0b0-679f-4641-b657-20e74cd1aa85"
+  },
+  { "skills": "Unity", "skills_id": "1594dea5-9f30-457c-a93f-f526fae082ea" },
+  { "skills": "ASP.NET", "skills_id": "15071b13-d410-45c8-aaea-e2b8e7f46542" },
+  {
+    "skills": "AutoHotkey",
+    "skills_id": "512b2073-3e62-423d-be13-3185a3aa655a"
+  },
+  { "skills": "Angular", "skills_id": "bc682aed-2043-4709-adac-0bcf64a53a5b" },
+  {
+    "skills": "Ant Design",
+    "skills_id": "36ac9ebc-ee47-4ad2-a5dd-55c545574acc"
+  },
+  { "skills": "OCaml", "skills_id": "8e808481-5b3b-49e4-940d-48767d6d5778" },
+  { "skills": "Tornado", "skills_id": "9f490eff-d99a-4af8-9657-64458546f137" },
+  { "skills": "Theano", "skills_id": "c13b5717-cd48-4b1f-bd35-722efbaa81c6" },
+  { "skills": "Sanic", "skills_id": "1cb63ac1-a559-4c4b-8780-4a628c566bc0" },
+  { "skills": "SQL", "skills_id": "a88fd7ec-fb7e-4065-8f7e-eff60a03fffd" },
+  { "skills": "Nest.js", "skills_id": "abe06adb-e71a-4325-9d9e-394f864118f9" },
+  {
+    "skills": "Element UI",
+    "skills_id": "019d57c5-b0c4-4bfe-baad-3f3c4240907a"
+  },
+  {
+    "skills": "Ruby on Rails",
+    "skills_id": "3e6f2f63-f971-48cc-82a9-db7b4026f920"
+  },
+  { "skills": "C++", "skills_id": "2aef9d9f-2402-441e-8378-abcae0f35fa1" },
+  {
+    "skills": "Spring Boot",
+    "skills_id": "aab64449-9532-4431-9aca-81478ac3d907"
+  },
+  { "skills": "Go", "skills_id": "01d04f09-2fd9-457b-890c-76fa091a8dd1" },
+  {
+    "skills": "Chakra UI",
+    "skills_id": "adb67f74-6fce-4497-8561-006d95a3f415"
+  },
+  { "skills": "Vue.js", "skills_id": "e454545e-ed1b-48a4-a813-e66b7a749318" },
+  { "skills": "Buefy", "skills_id": "afaeee69-b24c-4473-9b02-e151af61e440" },
+  { "skills": "AutoIt", "skills_id": "de9291f8-e242-4e7e-abc3-b44ef74ff8e0" },
+  { "skills": "Django", "skills_id": "bb416b23-d072-43c0-a54c-2181a947a2af" },
+  { "skills": "Erlang", "skills_id": "e510cf7a-46a3-4829-81c1-dee6a7f3cb8f" },
+  { "skills": "Numpy", "skills_id": "45818203-2985-4ae4-b18d-172b6089babf" },
+  { "skills": "C#", "skills_id": "df728adf-6bd0-454f-875e-c34d6c1569be" },
+  {
+    "skills": "Express.js",
+    "skills_id": "50bed349-51dd-49b4-825b-b005d89a48db"
+  },
+  { "skills": "Gensim", "skills_id": "3e3c6e22-334b-4ec7-92c6-66425c1b75b1" },
+  { "skills": "Clojure", "skills_id": "fde4b62f-8a4e-4bc6-a445-3f32c1e6c808" },
+  { "skills": "Tcl", "skills_id": "f56be422-d1c4-4b6d-a919-e5f3b0d714dc" },
+  { "skills": "Lua", "skills_id": "2fd38a90-3f3f-4fcb-8a04-6337767162bc" },
+  { "skills": "Kotlin", "skills_id": "5bae503a-391d-4f8b-9341-f1cb534fec86" },
+  { "skills": "Awk", "skills_id": "a78afaec-fc82-4662-8f15-e18f09fb086b" },
+  {
+    "skills": "Milligram",
+    "skills_id": "1a65a002-c794-4b09-a7c7-7bff27642b09"
+  },
+  { "skills": "Pygame", "skills_id": "a7fb1cf8-8bf9-4596-8b6e-b2db664e1d1f" },
+  { "skills": "Java", "skills_id": "61811fce-ecbd-4162-a637-7c4056d4acc5" },
+  { "skills": "SciPy", "skills_id": "281b82d8-3d65-4dd0-a953-16d86588ceac" },
+  { "skills": "Bash", "skills_id": "e0c7c480-265e-409a-b1a5-557178e8d63f" },
+  { "skills": "Godot", "skills_id": "dd6e6c01-9688-495b-b034-6a5222e2b2d2" },
+  { "skills": "Spacy", "skills_id": "7e088f78-ffeb-471d-bf6a-212161758b28" },
+  {
+    "skills": "Backbone.js",
+    "skills_id": "b12b3ac2-19d0-4944-a97a-a19d7882e2c9"
+  },
+  { "skills": "R", "skills_id": "94367dfc-704b-4fdb-b8bf-66875f8f9d16" },
+  { "skills": "C", "skills_id": "b37e8eb3-5459-4db5-a8d3-d838ea4e77e2" },
+  { "skills": "React", "skills_id": "b789beae-c963-462c-9377-1fd207030a69" },
+  { "skills": "Laravel", "skills_id": "3597e3c8-c67b-43f6-be93-17ba04e4ad82" },
+  { "skills": "Bulma", "skills_id": "14ba96b3-5015-4a47-8556-976a4972eaf6" },
+  {
+    "skills": "Objective-C",
+    "skills_id": "1a762c41-8720-4e16-b3d3-731f15688e8d"
+  },
+  { "skills": "Rust", "skills_id": "5d1c8625-79de-4432-ba2e-dcb8bf20aa67" },
+  { "skills": "F#", "skills_id": "ba361eb0-4cf4-4509-9a61-c60c1e82c62c" },
+  {
+    "skills": "Starlette",
+    "skills_id": "343265fa-aa30-4ebd-ab65-69dc3f5b34e8"
+  },
+  { "skills": "Scala", "skills_id": "8ad704c9-e949-43d1-9e42-7b0b3480b0d2" },
+  { "skills": "PyTorch", "skills_id": "26062f6e-5fff-4f78-a11e-421207f6bca7" },
+  {
+    "skills": "Common Lisp",
+    "skills_id": "f2f846f0-5ad3-46b9-a04b-23ac4d949365"
+  },
+  {
+    "skills": "Semantic UI",
+    "skills_id": "e3d7ca46-4034-4164-9c1b-b683f848c30d"
+  },
+  {
+    "skills": "Flask-RESTful",
+    "skills_id": "8d6d98dd-d2e1-4f1d-acb3-ef597585c768"
+  },
+  { "skills": "Ember.js", "skills_id": "59382c44-2b72-4d81-9b8a-0b51d236a78b" },
+  {
+    "skills": "Scikit-learn",
+    "skills_id": "16c7ca66-d88e-4928-99d8-0ac4b8c7f688"
+  },
+  { "skills": "Pascal", "skills_id": "fadec17f-a05e-43c5-8efd-e34e14ce2a47" },
+  { "skills": "Bokeh", "skills_id": "fbb4ac49-3662-4a34-b71e-a16f5635a26b" },
+  { "skills": "Tachyons", "skills_id": "7798bb6d-90ef-4d99-9540-f5ee71b4c1a4" },
+  { "skills": "FastAPI", "skills_id": "77f68ef3-e3b7-4309-8424-7d0f474e43de" },
+  { "skills": "Dart", "skills_id": "ad8c7f29-87a7-4a2e-8032-c45c43f127b2" },
+  { "skills": "Flask", "skills_id": "a45e2ca8-36d9-4386-a681-97a5d60f6af7" },
+  { "skills": "mini.css", "skills_id": "d2d4d973-26df-4355-901b-1423f5f6f0df" },
+  { "skills": "Keras-RL", "skills_id": "9a50b86b-8d7b-4e3f-81d4-118101898217" },
+  { "skills": "Perl", "skills_id": "aa51f157-1266-429a-aca8-5fd03cbb7fae" },
+  {
+    "skills": "TypeScript",
+    "skills_id": "71002c3a-7c50-45a3-8785-270ba8d7c14a"
+  },
+  { "skills": "Polymer", "skills_id": "af9ed12c-3138-4546-889b-14fa08488f34" },
+  { "skills": "Logo", "skills_id": "07f7da23-f5ee-4be7-8299-6643f3e3a2d1" },
+  {
+    "skills": "TensorFlow",
+    "skills_id": "17dbe570-caeb-49a5-b07f-f677864e5299"
+  },
+  { "skills": "COBOL", "skills_id": "679aaae5-7604-428c-9243-349607f1eac3" },
+  { "skills": "NLTK", "skills_id": "c305cdba-6725-42ad-bee3-97f424060f06" },
+  {
+    "skills": "JavaScript",
+    "skills_id": "416397e0-5a79-4f2e-866c-51ae7fb1fe1a"
+  },
+  { "skills": "Keras", "skills_id": "8f1c3c8e-c770-4216-8449-afd468d4e417" },
+  {
+    "skills": "Bootstrap",
+    "skills_id": "2e63aa99-b5b4-4508-bd37-856fd19b6101"
+  },
+  {
+    "skills": "Matplotlib",
+    "skills_id": "583ebd2b-bf93-4a45-a83b-af1a96157d3d"
+  },
+  { "skills": "Assembly", "skills_id": "30dc7e60-ffc6-4bd6-bb5c-37e28bcba1b6" },
+  {
+    "skills": "Visual Basic",
+    "skills_id": "da81ce55-87fd-4750-8a65-9fea50e7bcd4"
+  },
+  { "skills": "Pandas", "skills_id": "ab634e2e-75c9-4a81-8dd4-b4b87f26ce8a" },
+  {
+    "skills": "Django REST framework",
+    "skills_id": "4baafa05-2ebb-410e-ba9c-748746c78876"
+  },
+  { "skills": "Ada", "skills_id": "1c3381ce-a341-4bbd-aed3-a4104d0e3b5d" },
+  { "skills": "Node.js", "skills_id": "e36da6ee-e1e8-4efb-be97-ddfd36fdfa0e" },
+  { "skills": "Prolog", "skills_id": "25f3888c-82fa-4304-9e20-adec067dd7da" },
+  { "skills": "Next.js", "skills_id": "6f319335-7ab0-4574-abc1-791e6169562d" },
+  { "skills": "Python", "skills_id": "5f24d436-838b-4db6-87c0-c5db5a47a2f7" },
+  { "skills": "Tailwind", "skills_id": "9f28d855-70a0-4185-9cbb-f2fc148b36e6" },
+  { "skills": "Elm", "skills_id": "93269a94-7917-487b-9955-a473dcbdee50" },
+  { "skills": "Aurelia", "skills_id": "db946412-8860-4867-b633-10e942fa5feb" },
+  { "skills": "Meteor", "skills_id": "0c5b43a7-a271-43bf-a7cb-0db02bd9ed84" },
+  { "skills": "Seaborn", "skills_id": "b8524637-6bc5-415a-a45a-e2968c592838" },
+  { "skills": "Lisp", "skills_id": "a055ac4d-2f1d-4d7a-bea4-3ef2aa84e85b" }
+]
