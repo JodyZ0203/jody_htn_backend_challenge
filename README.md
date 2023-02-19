@@ -6,7 +6,7 @@ have script that populates database
 
 add tests
 https://github.com/shantnu/TwitterAnalyser/blob/master/Part5/test_backend.py
-and mock and inittest
+and mock and unittest
 
 postman collection
 
