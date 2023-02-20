@@ -17,7 +17,7 @@ def populate_skills(skills_dict: dict)-> None:
 
     cur = connection.cursor()
     for key, val in skills_dict.items():
-        cur.execute("INSERT INTO skills (skills_id, skills) VALUES  (?,?)", (val, key))
+        cur.execute("INSERT INTO skills(skills_id, skill) VALUES  (?,?)", (val, key))
 
     connection.commit()
     connection.close()
@@ -30,6 +30,7 @@ def process_users_and_ratings(data: dict, skills_dict: dict)-> dict:
         user["user_id"] = id
         skills = user["skills"]
         user.pop("skills")
+        skills = sorted(skills, key=lambda d: d['rating'], reverse=True) 
         for skill in skills:
             skills_id = skills_dict[skill["skill"]]
             skill["skills_id"] = skills_id
@@ -39,7 +40,7 @@ def process_users_and_ratings(data: dict, skills_dict: dict)-> dict:
             connection = sqlite3.connect('../app/database/htn.db')
 
             cur = connection.cursor()
-            cur.execute("INSERT INTO skill_items (skills_id, user_id, rating) VALUES  (?,?,?)", (skills_id ,id, skill["rating"]))
+            cur.execute("INSERT OR IGNORE INTO skill_items (skills_id, user_id, rating) VALUES  (?,?,?)", (skills_id ,id, skill["rating"]))
 
             connection.commit()
             connection.close()
@@ -63,3 +64,16 @@ if __name__ == "__main__":
     print(skills)
     print(user_data)
     #populate_skills(dictionary)
+
+    '''
+    data = json.load(open('../app/database/skill_items.json', 'r'))
+    for skill in data:
+            connection = sqlite3.connect('../app/database/htn.db')
+
+            cur = connection.cursor()
+            print(skill["user_id"])
+            cur.execute("INSERT OR IGNORE INTO test_items (skill_id, user_id, rating) VALUES  (?,?,?)", (skill["skills_id"] ,skill["user_id"], skill["rating"]))
+            print(skill["user_id"])
+            connection.commit()
+            connection.close() 
+    '''

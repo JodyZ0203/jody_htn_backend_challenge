@@ -13,11 +13,24 @@ def get_db():
     return conn
 
 def query_db(query, args=(), one=False):
-    query = """SELECT * from users"""
     connection = get_db()
-    results = connection.execute(query).fetchall()
+    if args:
+        results = connection.execute(query, args).fetchall()
+    else:
+        results = connection.execute(query).fetchall()
     connection.close()
     return [dict(ix) for ix in results][0] if one else [dict(ix) for ix in results]
+
+def execute_query(query, args=(), one=False):
+    connection = get_db()
+    cur = connection.cursor()
+    print(query)
+    if args:
+        cur.execute(query, args)
+    else:
+        cur.execute(query)
+    connection.commit()
+    connection.close()
 
 def close_db(e=None):
     db = g.pop('db', None)

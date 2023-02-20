@@ -5,7 +5,7 @@ import uuid
 from flask import Blueprint, request
 from app.models.users import Skill, User
 import app.utils.util as util
-from app.database.db import get_db, query_db
+from app.database.db import execute_query, get_db, query_db
 from app.database.skills import skills_dict
 from scripts.backfill_htn_db import process_users_and_ratings
 
@@ -29,7 +29,7 @@ ORDER by random() limit ?"""
     connection.close()
     return util.send_json([dict(ix) for ix in rows]) #CREATE JSON
 
-@bp.route('/skillss')
+@bp.route('/skills')
 def get_skill():
     
     connection = sqlite3.connect('app/database/htn.db')
@@ -112,6 +112,7 @@ where user_id = ?"""
     skills = get_user_skills(user_id, True)
     user["skills"] = skills 
     connection.close()
+    user.pop("user_id")
     if flag:
         return user
     return util.send_json(user) #CREATE JSON
@@ -126,7 +127,7 @@ def get_users():
 
     #rows = cur.execute(sqlite).fetchall()
     users = query_db(sqlite)
-    #users = [dict(ix) for ix in rows]
+     #users = [dict(ix) for ix in rows]
     for user in users:
         user_id = user.pop("user_id")
         skills = get_user_skills(user_id, True)
@@ -150,22 +151,60 @@ where user_id = ?"""
         return user
     return util.send_json(user) #CREATE JSON
 
-@bp.route('/users/<user_id>', methods=["PUT"])
-def modify_user_information(user_id: uuid, flag: bool = False) -> User:
+@bp.route('/skills/<user_id>', methods=["PUT"])
+def update_skills(user_id: uuid, skills: Skill=None, flag: bool = False) -> User:
     if not util.is_uuid(user_id):
         return util.json_error(400, f"This user_id {user_id} is not valid uuid")
     request_body = json.loads(request.data)
-    skill = request_body.get("skills", None)
+    skills = request_body.get("skills", skills)
+
+    for skill in skills:
+        skill_id = str(uuid.uuid4())
+        skill_name = skill["skill"]
+        skill_rating = skill["rating"]
+        # add new skill to skill table if not exists in it already
+        query1 = "INSERT OR IGNORE INTO skills(skill, skills_id) VALUES(?, ?)"
+        execute_query(query1, (skill_name, skill_id))
+        skill_id = query_db("select skills_id from skills where skill = ?", (skill_name,), True)["skills_id"]
+        #test = query_db("select skills_id from skills where skill = ?", (skill_name,))
+        #query1 = "INSERT OR IGNORE INTO skills(skill, skills_id) VALUES(?, ?)"
+        #connection = get_db()
+        #cur = connection.cursor()
+        #cur.execute(query1, (skill_name, skill_id))
+        #execute_query(query1, (skill_id, skill_name))
+        #return test
+        query2 = "INSERT INTO skill_items(user_id, skills_id, rating) " +  f"VALUES('{user_id}', '{skill_id}', {skill_rating}) " + "ON CONFLICT (user_id, skills_id) DO " + f"UPDATE SET rating={skill_rating};"
+        #return query2
+        execute_query(query2)
+    
+        # update skills for user
+
+    return "Success"
+
+    # update skill rating if exists
+    # create new skill dict if doesnt exist
+    # add new skill for this person
+
+
+@bp.route('/users/<user_id>', methods=["PUT"])
+def update_user_information(user_id: uuid, flag: bool = False) -> User:
+    if not util.is_uuid(user_id):
+        return util.json_error(400, f"This user_id {user_id} is not valid uuid")
+    request_body = json.loads(request.data)
+    skills = request_body.get("skills", None)
     request_body.pop("skills")
     query_component = []
     for key, val in request_body.items():
-        query_component.append(f"{key} = {val}")
+        query_component.append(f"{key} = '{val}'")
     query_components = ",".join(query_component)
-    sql = (f"UPDATE users "
+    sql = ("UPDATE users " + 
        f"SET {query_components} "
-       f"WHERE user_id={user_id};")
-    return sql
-
+       f"WHERE user_id='{user_id}';")
+    #return sql
+    # execute this sql
+    execute_query(sql)
+    update_skills(user_id, skills)
+    return get_user_information(user_id, True) 
     # update skill rating if exists
     # create new skill dict if doesnt exist
     # add new skill for this person
