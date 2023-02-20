@@ -5,7 +5,7 @@ import uuid
 from flask import Blueprint, request
 from app.models.users import Skill, User
 import app.utils.util as util
-from app.database.db import execute_query, get_db, query_db
+from app.database.db import execute_query, query_db
 from app.database.skills import skills_dict
 from scripts.backfill_htn_db import process_users_and_ratings
 
@@ -20,16 +20,12 @@ def hello_world():
 @bp.route('/users/random/<int:number_of_winners>', methods=["GET"])
 def get_lucky_users(number_of_winners):
     number_of_winners = 1 if not number_of_winners else int(number_of_winners)
-    connection = sqlite3.connect('app/database/htn.db')
-    cur = connection.cursor()
-    cur.row_factory = sqlite3.Row # This enables column access by name: row['column_name'] 
     sqlite = """Select * from users
 ORDER by random() limit ?"""
-    rows = cur.execute(sqlite, (number_of_winners,)).fetchall()
-    connection.close()
-    return util.send_json([dict(ix) for ix in rows]) #CREATE JSON
+    result = query_db(sqlite,(number_of_winners,))
+    return util.send_json(result) #CREATE JSON
 
-@bp.route('/skills')
+@bp.route('/skill_items')
 def get_skill():
     
     connection = sqlite3.connect('app/database/htn.db')
@@ -205,17 +201,3 @@ def update_user_information(user_id: uuid, flag: bool = False) -> User:
     execute_query(sql)
     update_skills(user_id, skills)
     return get_user_information(user_id, True) 
-    # update skill rating if exists
-    # create new skill dict if doesnt exist
-    # add new skill for this person
-
-    '''
-    query = """select * from users
-where user_id = ?"""
-    user = query_db(query, user_id, True)
-    skills = get_user_skills(user_id, True)
-    user["skills"] = skills 
-    if flag:
-        return user
-    return util.send_json(user) 
-    '''
