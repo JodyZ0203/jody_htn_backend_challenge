@@ -4,7 +4,7 @@ from uuid import UUID
 import flask
 
 
-def is_uuid(id):
+def is_uuid(id) -> bool:
     try:
         UUID(id)
         return True
