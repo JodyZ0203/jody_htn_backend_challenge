@@ -1,10 +1,10 @@
 # Jody's Hack The North Backend Challenge Submission
 
 ## Linting and Code Formatting
-- I use [Black](ms-python.black-formatter) for auto formatting
+- I use [Black](https://pypi.org/project/black/) for auto formatting
     - Format the repo with `black .` or `python3 -m black .`
     - Make sure black is installed with `pip install black` or `pip3 install black`
-- Also [isort](ms-python.isort) to sort imports and consistent imports
+- Also [isort](https://pypi.org/project/isort/) to sort imports and consistent imports
     - Sort imports across the repo with `isort .` or `python3 -m isort .`
     - Make sure black is installed with `pip install isort` or `pip3 install isort`
 
