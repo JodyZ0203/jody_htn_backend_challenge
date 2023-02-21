@@ -8,8 +8,10 @@ QUERY_SKILLS_FREQUENCY = """SELECT skills.skill AS skill, count(*) AS frequency 
                             HAVING frequency < ? AND frequency > ?
                             ORDER BY frequency DESC
                         """
-QUERY_SKILLS_BY_USER_ID= """SELECT rating, skill FROM users, skill_items, skills
+QUERY_SKILLS_BY_USER_ID = """SELECT rating, skill FROM users, skill_items, skills
                              WHERE users.user_id = skill_items.user_id AND skills.skills_id=skill_items.skills_id AND users.user_id = ?"""
-QUERY_USER_BY_USER_ID= """SELECT * FROM users WHERE user_id = ?"""
-QUERY_INSERT_NEW_SKILL= """INSERT OR IGNORE INTO skills(skill, skills_id) VALUES(?, ?)"""
-QUERY_SKILL_ID_BY_SKILL= """SELECT skills_id FROM skills WHERE skill = ?"""
+QUERY_USER_BY_USER_ID = """SELECT * FROM users WHERE user_id = ?"""
+QUERY_INSERT_NEW_SKILL = (
+    """INSERT OR IGNORE INTO skills(skill, skills_id) VALUES(?, ?)"""
+)
+QUERY_SKILL_ID_BY_SKILL = """SELECT skills_id FROM skills WHERE skill = ?"""

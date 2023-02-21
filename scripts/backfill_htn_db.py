@@ -2,8 +2,7 @@ import sqlite3
 import uuid
 import json
 
-DATABASE = "../app/database/htn.db"
-
+DATABASE = "app/database/htn.db"
 
 def get_skills(dataset: dict) -> list:
     skills_id_dict = {}
@@ -61,7 +60,7 @@ def process_users_and_ratings(data: dict, skills_dict: dict) -> dict:
 
 
 if __name__ == "__main__":
-    data = json.load(open("../app/database/HTN_2023_BE_Challenge_Data.json", "r"))
+    data = json.load(open("app/database/HTN_2023_BE_Challenge_Data.json", "r"))
     skills_dict = get_skills(data)
     populate_skills(skills_dict)
     user_data, skills = process_users_and_ratings(data, skills_dict)

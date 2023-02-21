@@ -1,5 +1,6 @@
 from typing import TypedDict
 
+
 class Skill(TypedDict):
     skill: str
     rating: int
