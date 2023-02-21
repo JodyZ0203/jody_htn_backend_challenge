@@ -2,14 +2,10 @@ import sqlite3
 
 from flask import g
 
-DATABASE = "app/database/htn.db"
+from app.constants.constants import DATABASE
 
 
 def get_db():
-    # db = getattr(g, '_database', None)
-    # if db is None:
-    #   db = g._database = sqlite3.connect(DATABASE)
-    # return db
     conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
@@ -28,7 +24,6 @@ def query_db(query, args=(), one=False):
 def execute_query(query, args=(), one=False):
     connection = get_db()
     cur = connection.cursor()
-    print(query)
     if args:
         cur.execute(query, args)
     else:

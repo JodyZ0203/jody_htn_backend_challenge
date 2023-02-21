@@ -5,6 +5,18 @@ from typing import List
 from flask import Blueprint, request
 
 import app.utils.util as util
+from app.constants.constants import INT_MAX
+from app.constants.query import (
+    QUERY_INSERT_NEW_SKILL,
+    QUERY_LUCKY_WINNER,
+    QUERY_SKILL_ID_BY_SKILL,
+    QUERY_SKILL_ITEMS,
+    QUERY_SKILLS,
+    QUERY_SKILLS_BY_USER_ID,
+    QUERY_SKILLS_FREQUENCY,
+    QUERY_USER_BY_USER_ID,
+    QUERY_USERS,
+)
 from app.database.db import execute_query, query_db
 from app.models.users import Skill, User
 
@@ -19,42 +31,32 @@ def hello_world():
 @bp.route("/users/random/<int:number_of_winners>", methods=["GET"])
 def get_lucky_users(number_of_winners):
     number_of_winners = 1 if not number_of_winners else int(number_of_winners)
-    query = """Select * FROM users ORDER by random() LIMIT ?"""
-    result = query_db(query, (number_of_winners,))
+    result = query_db(QUERY_LUCKY_WINNER, (number_of_winners,))
     return util.send_json(result)
 
 
 @bp.route("/skill_items")
 def get_skill():
-    query = """SELECT * FROM skill_items"""
-    result = query_db(query)
+    result = query_db(QUERY_SKILL_ITEMS)
     return json.dumps(result)
 
 
 @bp.route("/skills_list")
 def get_skillitems():
-    query = """SELECT * FROM skills"""
-    result = query_db(query)
+    result = query_db(QUERY_SKILLS)
     return json.dumps(result)
 
 
 @bp.route("/skills", methods=["GET"])
 def get_skill_freq():
-    int_max = 2147483647
     args = request.args
     try:
-        max_freq = int(args.get("max_frequency", int_max))
+        max_freq = int(args.get("max_frequency", INT_MAX))
         min_freq = int(args.get("min_frequency", 0))
     except ValueError as e:
         return util.json_error(500, str(e))
 
-    query = """SELECT skills.skill AS skill, count(*) AS frequency FROM skill_items, skills
-    WHERE skill_items.skills_id = skills.skills_id
-    GROUP BY skill
-    HAVING frequency < ? AND frequency > ?
-    ORDER BY frequency DESC
-    """
-    skills = query_db(query, (max_freq, min_freq))
+    skills = query_db(QUERY_SKILLS_FREQUENCY, (max_freq, min_freq))
     return util.send_json(skills)
 
 
@@ -62,10 +64,8 @@ def get_skill_freq():
 def get_user_skills(user_id: uuid, flag: bool = False) -> List[Skill]:
     if not util.is_uuid(user_id):
         return util.json_error(400, f"This user_id {user_id} is not valid uuid")
-    query = """SELECT rating, skill FROM users, skill_items, skills
-WHERE users.user_id = skill_items.user_id AND skills.skills_id=skill_items.skills_id AND users.user_id = ?"""
 
-    skills = query_db(query, (user_id,))
+    skills = query_db(QUERY_SKILLS_BY_USER_ID, (user_id,))
     if flag:
         return skills
     return util.send_json(skills)
@@ -76,9 +76,7 @@ def get_user_information(user_id: uuid, flag: bool = False) -> User:
     if not util.is_uuid(user_id):
         return util.json_error(400, f"This user_id {user_id} is not valid uuid")
 
-    query = """SELECT * FROM users
-WHERE user_id = ?"""
-    user = query_db(query, (user_id,), True)
+    user = query_db(QUERY_USER_BY_USER_ID, (user_id,), True)
     skills = get_user_skills(user_id, True)
     user["skills"] = skills
     user.pop("user_id")
@@ -89,27 +87,12 @@ WHERE user_id = ?"""
 
 @bp.route("/users")
 def get_users():
-    query = """SELECT * FROM users"""
-    users = query_db(query)
+    users = query_db(QUERY_USERS)
     for user in users:
         user_id = user.pop("user_id")
         skills = get_user_skills(user_id, True)
         user["skills"] = skills
     return util.send_json(users)
-
-
-@bp.route("/test/<user_id>", methods=["GET"])
-def get_user_information_test(user_id: uuid, flag: bool = False) -> User:
-    if not util.is_uuid(user_id):
-        return util.json_error(400, f"This user_id {user_id} is not valid uuid")
-    query = """SELECT * FROM users
-WHERE user_id = ?"""
-    user = query_db(query, user_id, True)
-    skills = get_user_skills(user_id, True)
-    user["skills"] = skills
-    if flag:
-        return user
-    return util.send_json(user)
 
 
 @bp.route("/skills/<user_id>", methods=["PUT"])
@@ -123,18 +106,15 @@ def update_skills(user_id: uuid, skills: Skill = None, flag: bool = False) -> Us
         skill_id = str(uuid.uuid4())
         skill_name = skill["skill"]
         skill_rating = skill["rating"]
-        query1 = "INSERT OR IGNORE INTO skills(skill, skills_id) VALUES(?, ?)"
-        execute_query(query1, (skill_name, skill_id))
-        skill_id = query_db(
-            "SELECT skills_id FROM skills WHERE skill = ?", (skill_name,), True
-        )["skills_id"]
-        query2 = (
+        execute_query(QUERY_INSERT_NEW_SKILL, (skill_name, skill_id))
+        skill_id = query_db(QUERY_SKILL_ID_BY_SKILL, (skill_name,), True)["skills_id"]
+        upsert_query = (
             "INSERT INTO skill_items(user_id, skills_id, rating) "
             + f"VALUES('{user_id}', '{skill_id}', {skill_rating}) "
             + "ON CONFLICT (user_id, skills_id) DO "
             + f"UPDATE SET rating={skill_rating};"
         )
-        execute_query(query2)
+        execute_query(upsert_query)
     return "Success"
 
 
