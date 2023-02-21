@@ -21,6 +21,7 @@ CREATE TABLE "skill_items" (
 	"rating"	INTEGER NOT NULL,
 	"user_id"	TEXT NOT NULL,
 	"skills_id"	TEXT NOT NULL,
+	PRIMARY KEY("user_id", "skills_id")
 	FOREIGN KEY("user_id") REFERENCES "users"("user_id"),
 	FOREIGN KEY("skills_id") REFERENCES "skills"("skills_id")
 );
