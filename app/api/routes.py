@@ -38,13 +38,13 @@ def get_lucky_users(number_of_winners):
 @bp.route("/skill_items")
 def get_skill():
     result = query_db(QUERY_SKILL_ITEMS)
-    return json.dumps(result)
+    return util.send_json(result)
 
 
 @bp.route("/skills_list")
 def get_skillitems():
     result = query_db(QUERY_SKILLS)
-    return json.dumps(result)
+    return util.send_json(result)
 
 
 @bp.route("/skills", methods=["GET"])
