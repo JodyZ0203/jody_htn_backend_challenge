@@ -61,4 +61,5 @@ I have provided a postman collection that contains all the possible requests in 
 
 
 ## Other
-Since there were duplicate skill ratings for some users, the approach taken is only setting the skill with the higher rating, so if we have two cases of python with different skill ratings, we would take the higher rating instead and ignore the lower rating.
+* Since there were duplicate skill ratings for some users, the approach taken is only setting the skill with the higher rating, so if we have two cases of python with different skill ratings, we would take the higher rating instead and ignore the lower rating.
+* I have added an extra endpoint `/users/random/1` that returns a random user, it could be used for raffles to draw lucky winners
