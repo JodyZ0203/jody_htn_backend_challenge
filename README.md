@@ -10,7 +10,8 @@
 
 
 ## Running the Backend
-- run the application with `docker-compose  up` 
+- run the application with 
+```docker-compose  up```
 
 
 ## File Structure Layout
@@ -47,48 +48,17 @@
 
 ## Populate Database
 I have script that populates database from the json file provided
-`python3 ./scripts/backfill_htn_db.py`
+```python3 ./scripts/backfill_htn_db.py```
 
 ## Run the Tests
-run tests (run `pip3 install pytest-mock pytest`)
-`python3 -m pytest`
+run tests (run `pip3 install pytest-mock pytest` if not installed)
+```python3 -m pytest```
 
 
 ## Postman Collection
-I have provided a postman collection that contains all the possible requests in the file `Hack The North 2023 Backend Challenge.postman_collection.json`.
+I have provided a postman collection that contains all the possible requests in the file 
+```Hack The North 2023 Backend Challenge.postman_collection.json```
 
 
 ## Other
 Since there were duplicate skill ratings for some users, the approach taken is only setting the skill with the higher rating, so if we have two cases of python with different skill ratings, we would take the higher rating instead and ignore the lower rating.
-
-
-add tests
-https://github.com/shantnu/TwitterAnalyser/blob/master/Part5/test_backend.py
-and mock and unittest
-
-postman collection
-
-isort, black, cspell
-
-update readme
-
-refactor
-
-write clean code
-
-make sure all endpoints are complete
-
-think about updating schema for skill items to allow composite key, which is multiple primary key
-https://stackoverflow.com/questions/418898/sqlite-upsert-not-insert-or-replace
-
-There were so many duplicate skills
-* pick the maximum rating skills
-
-generate requirement.txt
-`python3 -m  pipreqs.pipreqs [path/to/project]`
-
-run test
-`python3 -m pytest`
-
-get test coverage report
-`python3 -m coverage report`
