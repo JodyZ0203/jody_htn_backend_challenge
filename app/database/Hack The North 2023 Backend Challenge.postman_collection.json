@@ -1,0 +1,229 @@
+{
+	"info": {
+		"_postman_id": "0da950c8-8eb2-412d-b5dd-d555b81f4711",
+		"name": "Hack The North 2023 Backend Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14617852"
+	},
+	"item": [
+		{
+			"name": "Index",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000",
+					"host": [
+						"localhost"
+					],
+					"port": "3000"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Info",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User Skills",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"skills\": [{\"rating\": 3, \"skill\": \"Jinja\"}]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/skills/a7b8a25b-36bb-4f66-b4e6-66b7ac19487f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skills",
+						"a7b8a25b-36bb-4f66-b4e6-66b7ac19487f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Lucky Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/random/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"random",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Skill Frequency with custom filtering",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/skills?min_frequency=4&max_frequency=50",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skills"
+					],
+					"query": [
+						{
+							"key": "min_frequency",
+							"value": "4"
+						},
+						{
+							"key": "max_frequency",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Skill Frequency",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/skills",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Skill items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/skill_items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skill_items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Skill List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/skills_list",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skills_list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Skills by User Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/skills/a7b8a25b-36bb-4f66-b4e6-66b7ac19487f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"skills",
+						"a7b8a25b-36bb-4f66-b4e6-66b7ac19487f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Information by User Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/users/a7b8a25b-36bb-4f66-b4e6-66b7ac19487f",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"a7b8a25b-36bb-4f66-b4e6-66b7ac19487f"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
